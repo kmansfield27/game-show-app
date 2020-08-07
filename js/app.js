@@ -2,11 +2,10 @@
  * Project 4 - OOP Game App
  * app.js */
 
-const game = new Game();
-game.getRandomPhrase().addPhraseToDisplay();
+let game;
 
-game.phrases.forEach((phrase, index) => {
-    console.log(`Phrase ${index} - ${phrase.phrase}`);
+const resetButton = document.getElementById('btn__reset');
+resetButton.addEventListener('click', () => {
+    game = new Game();
+    game.startGame();
 });
-
-console.log(game.getRandomPhrase());

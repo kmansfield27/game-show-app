@@ -20,7 +20,7 @@ class Game {
                          new Phrase('The Twilight Zone'),
                          new Phrase('The Kids in the Hall'),
                          new Phrase('Star Trek'),
-                         new Phrase('Mystery Science Theater')];
+                         new Phrase('The Prisoner')];
         return phrases;
     }
 
@@ -28,9 +28,21 @@ class Game {
      * Retrieves a phrase at random from the array of phrases
      * @return {Object}  -  An object element from the array
      */
-    getRandomPhrase() {
-        this.activePhrase = this.phrases[ Math.floor(Math.random() * this.phrases.length )];
-        return this.activePhrase;
+    get getRandomPhrase() {
+        return this.phrases[ Math.floor(Math.random() * this.phrases.length )];
     }
+
+    /**
+     * Starts the game, hides start screen, selects a random phrase, and displays it
+     */
+
+     startGame() {
+        const overlay = document.getElementById('overlay');
+        overlay.style.display = 'none';
+
+        this.activePhrase = this.getRandomPhrase;
+
+        this.activePhrase.addPhraseToDisplay();
+     }
 
 }
