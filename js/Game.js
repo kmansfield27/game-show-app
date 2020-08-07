@@ -26,12 +26,11 @@ class Game {
 
     /**
      * Retrieves a phrase at random from the array of phrases
-     * @return {array[x]}  -  An element from an array
+     * @return {Object}  -  An object element from the array
      */
     getRandomPhrase() {
         this.activePhrase = this.phrases[ Math.floor(Math.random() * this.phrases.length )];
         return this.activePhrase;
     }
-
 
 }
