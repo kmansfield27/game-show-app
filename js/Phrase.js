@@ -28,4 +28,31 @@
         }
     }
 
+    /**
+     * Checks to see if the selected letter is in the phrase
+     * @return {boolean}  -  True or false if the letter selected matches a letter in the phrase
+     */
+    checkLetter(letter) {
+        
+        var containsLetter = this.phrase.includes(letter);
+        if ( containsLetter) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Reveals the letter(s) on the board that match the player's selection.
+     */
+
+    showMatchedLetter(letter) {
+        const matchedLetters = document.querySelectorAll('.' + letter);
+        for (let letter of matchedLetters) {
+            letter.classList.remove('hide');
+            letter.classList.add('show');
+        }
+    }
+
+
  }
