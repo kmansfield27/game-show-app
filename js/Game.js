@@ -18,7 +18,7 @@ class Game {
     createPhrases() {
         const phrases = [new Phrase('Twin Peaks'),
                          new Phrase('The Twilight Zone'),
-                         new Phrase('The Kids in the Hall'),
+                         new Phrase('Game of Thrones'),
                          new Phrase('Star Trek'),
                          new Phrase('The Prisoner')];
         return phrases;
@@ -38,7 +38,31 @@ class Game {
 
      startGame() {
         const overlay = document.getElementById('overlay');
+        const keyboardWrap = document.querySelector('#phrase');
+        const keyboard = keyboardWrap.firstElementChild;
+        const keys = document.querySelectorAll('.key');
+        const hearts = document.querySelectorAll('.tries img'); 
+
         overlay.style.display = 'none';
+
+        // https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
+        while (keyboard.firstElementChild) {
+            keyboard.removeChild(keyboard.firstElementChild);
+        }
+
+        for (let key of keys) {
+            key.disabled = false;
+            key.className = '';
+            key.className = 'key';
+            key.style.transition = 'none';
+        }
+
+        for (let heart of hearts) {
+            heart.setAttribute('alt', 'Heart Icon');
+            heart.setAttribute('src', 'images/liveHeart.png');
+        }
+
+
 
         this.activePhrase = this.getRandomPhrase;
 
@@ -114,6 +138,7 @@ class Game {
             msg.textContent = 'You won! Nice job!';
         }
 
+        this.missed = 0;
      }
 
 
